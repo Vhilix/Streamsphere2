@@ -1,0 +1,46 @@
+{
+    "name": "netflix-mvp-backend",
+    "version": "1.0.0",
+    "description": "Netflix MVP Backend API",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "tsx watch src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "lint": "eslint src --ext .ts",
+        "format": "prettier --write \"src/**/*.ts\""
+    },
+    "keywords": [
+        "netflix",
+        "streaming",
+        "api"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "jsonwebtoken": "^9.0.2",
+        "bcryptjs": "^2.4.3",
+        "zod": "^3.22.4",
+        "helmet": "^7.1.0",
+        "morgan": "^1.10.0",
+        "@aws-sdk/client-s3": "^3.490.0",
+        "@aws-sdk/s3-request-presigner": "^3.490.0"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.21",
+        "@types/cors": "^2.8.17",
+        "@types/jsonwebtoken": "^9.0.5",
+        "@types/bcryptjs": "^2.4.6",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^20.10.0",
+        "typescript": "^5.3.3",
+        "tsx": "^4.7.0",
+        "eslint": "^8.56.0",
+        "@typescript-eslint/eslint-plugin": "^6.18.0",
+        "@typescript-eslint/parser": "^6.18.0",
+        "prettier": "^3.1.1"
+    }
+}

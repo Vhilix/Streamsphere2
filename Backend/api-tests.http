@@ -1,0 +1,125 @@
+### Netflix MVP API Tests
+### Use with VS Code REST Client extension or copy to Postman
+
+@baseUrl = http://localhost:5000
+@token = 
+@refreshToken = 
+
+### Health Check
+GET {{baseUrl}}/health
+
+### ============================================
+### Authentication
+### ============================================
+
+### Sign Up
+# @name signup
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123",
+  "name": "Test User"
+}
+
+### Login
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Refresh Token
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Logout
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### ============================================
+### Catalog & Titles
+### ============================================
+
+### Get Catalog (First Page)
+GET {{baseUrl}}/catalog?pageSize=10
+
+### Get Catalog (Second Page)
+GET {{baseUrl}}/catalog?cursor=10&pageSize=10
+
+### Get Title Details
+GET {{baseUrl}}/titles/tt1000
+
+### ============================================
+### Playback (Requires Auth)
+### ============================================
+
+### Start Playback
+POST {{baseUrl}}/play/start
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "titleId": "tt1000"
+}
+
+### Send Heartbeat
+POST {{baseUrl}}/play/heartbeat
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "titleId": "tt1000",
+  "positionSec": 120,
+  "bitrateKbps": 2500
+}
+
+### ============================================
+### Recommendations (Requires Auth)
+### ============================================
+
+### Get Home Recommendations
+GET {{baseUrl}}/recs/home
+Authorization: Bearer {{token}}
+
+### Get Title Recommendations
+GET {{baseUrl}}/recs/for/tt1000
+Authorization: Bearer {{token}}
+
+### ============================================
+### Account (Requires Auth)
+### ============================================
+
+### Get Profile
+GET {{baseUrl}}/me
+Authorization: Bearer {{token}}
+
+### Update Profile
+PATCH {{baseUrl}}/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Updated Name"
+}
+
+### Update Password
+PATCH {{baseUrl}}/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "password": "newpassword123"
+}
