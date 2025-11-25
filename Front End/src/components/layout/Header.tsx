@@ -19,11 +19,14 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+    <header
+      className="sticky top-0 z-50 border-b border-gray-800 backdrop-blur-sm"
+      style={{ background: "linear-gradient(to bottom right, #1d4ed8, #60a5fa)" }}
+    >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
           <Film className="w-8 h-8" />
-          <span className="sr-only md:not-sr-only">StreamPlatform</span>
+          <span className="sr-only md:not-sr-only">StreamSphere</span>
         </Link>
 
         <nav className="flex items-center gap-4">

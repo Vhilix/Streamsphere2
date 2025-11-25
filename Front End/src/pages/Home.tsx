@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export function Home() {
   const navigate = useNavigate();
-  
+
   // Using mock data for MVP - replace with real API call
   const { data, isLoading, error } = useQuery({
     queryKey: ['catalog'],
@@ -46,15 +46,15 @@ export function Home() {
       {/* Hero Section */}
       {featuredTitle && (
         <div className="relative h-[70vh] mb-8">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ 
+            style={{
               backgroundImage: `url(${featuredTitle.posterUrl})`,
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
           </div>
-          
+
           <div className="relative container mx-auto px-4 h-full flex flex-col justify-end pb-16">
             <h1 className="mb-4 max-w-2xl">{featuredTitle.name}</h1>
             <div className="flex items-center gap-3 mb-6 text-gray-300">
@@ -63,15 +63,15 @@ export function Home() {
               <span>{featuredTitle.genres.join(', ')}</span>
             </div>
             <div className="flex gap-3">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 onClick={() => navigate(`/title/${featuredTitle.id}`)}
               >
                 <Play className="w-5 h-5 mr-2" />
                 Play Now
               </Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="outline"
                 onClick={() => navigate(`/title/${featuredTitle.id}`)}
               >
@@ -86,17 +86,17 @@ export function Home() {
       <div className="container mx-auto">
         {data && (
           <>
-            <TitleRow 
-              title="Trending Now" 
-              titles={data.items.slice(0, 10)} 
+            <TitleRow
+              title="Trending Now"
+              titles={data.items.slice(0, 10)}
             />
-            <TitleRow 
-              title="Popular on StreamPlatform" 
-              titles={data.items.slice(5, 15)} 
+            <TitleRow
+              title="Popular on StreamPlatform"
+              titles={data.items.slice(5, 15)}
             />
-            <TitleRow 
-              title="New Releases" 
-              titles={data.items.slice(10, 20)} 
+            <TitleRow
+              title="New Releases"
+              titles={data.items.slice(10, 20)}
             />
           </>
         )}
